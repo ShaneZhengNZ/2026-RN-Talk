@@ -62,7 +62,7 @@
     },
     "owner": "shanezheng-linkecu",
     "runtimeVersion": {
-      "policy": "fingerprint"
+      "policy": "appVersion"
     },
     "updates": {
       "url": "https://u.expo.dev/a1f0aaa5-3c9c-44f8-8697-3719fb932331"
