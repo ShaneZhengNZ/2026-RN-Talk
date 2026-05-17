@@ -8,9 +8,15 @@
     "scheme": "rntalk",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.linkecu.shane.rntalk",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
+      "package": "com.linkecu.shane.rntalk",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -25,6 +31,8 @@
     },
     "plugins": [
       "expo-router",
+      "expo-font",
+      "expo-image",
       [
         "expo-splash-screen",
         {
