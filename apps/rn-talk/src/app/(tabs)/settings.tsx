@@ -13,8 +13,7 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create((theme) => ({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: theme.spacing.lg,
     gap: theme.spacing.sm,
     backgroundColor: theme.colors.background,
   },

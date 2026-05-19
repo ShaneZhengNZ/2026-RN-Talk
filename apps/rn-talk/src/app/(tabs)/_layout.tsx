@@ -13,6 +13,11 @@ export default function TabsLayout() {
         <NativeTabs.Trigger.Icon sf="flame.fill" drawable="ic_menu_view" />
       </NativeTabs.Trigger>
 
+      <NativeTabs.Trigger name="gallery">
+        <NativeTabs.Trigger.Label>Gallery</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="paintpalette.fill" drawable="ic_menu_gallery" />
+      </NativeTabs.Trigger>
+
       <NativeTabs.Trigger name="settings">
         <NativeTabs.Trigger.Label>Settings</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf="gearshape.fill" drawable="ic_menu_preferences" />
