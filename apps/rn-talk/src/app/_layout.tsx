@@ -4,7 +4,7 @@ import { StrictMode } from 'react';
 export default function RootLayout() {
   return (
     <StrictMode>
-      <Stack />
+      <Stack screenOptions={{ headerShown: false }} />
     </StrictMode>
   );
 }
