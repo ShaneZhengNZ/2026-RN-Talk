@@ -39,6 +39,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+.turbo/
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
@@ -141,3 +142,7 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Deck build artifacts (talk-deck.pptx is committed, intermediates are not)
+presentation/deck-preview-*.jpg
+presentation/talk-deck.pdf
