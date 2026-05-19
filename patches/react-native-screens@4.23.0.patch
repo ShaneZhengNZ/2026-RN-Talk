@@ -1,0 +1,14 @@
+diff --git a/ios/RNSScreenStack.mm b/ios/RNSScreenStack.mm
+index e37e40ab0aa83d46709a75b0fc0f7234da63cdd3..512032fbebc412827d7d425b20900de165c8be34 100644
+--- a/ios/RNSScreenStack.mm
++++ b/ios/RNSScreenStack.mm
+@@ -258,6 +258,9 @@ - (void)initCommonProps
+   _presentedModals = [NSMutableArray new];
+   _controller = [RNSNavigationController new];
+   _controller.delegate = self;
++  // Fix: prevent white flash on iOS swipe-back gesture in dark mode.
++  // The nav controller's view has no backgroundColor by default, exposing white during interactive transitions.
++  _controller.view.backgroundColor = [UIColor systemBackgroundColor];
+   _sinkEventsPanGestureRecognizer = [[UIPanGestureRecognizer alloc] init];
+ #if !TARGET_OS_TV && !TARGET_OS_VISION
+   [self setupGestureHandlers];
