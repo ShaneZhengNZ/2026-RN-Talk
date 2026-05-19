@@ -12,12 +12,14 @@
     "typecheck": "turbo run typecheck",
     "dep:check": "syncpack lint",
     "dep:fix": "syncpack fix-mismatches && syncpack format",
+    "knip": "knip",
     "lint": "biome check . && bun --filter '@rn-talk/mobile' lint",
     "lint:fix": "biome check . --write",
     "format": "biome format . --write"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.14",
+    "knip": "^5.86.0",
     "syncpack": "14.2.0",
     "turbo": "^2.3.0",
     "typescript": "~5.9.2"

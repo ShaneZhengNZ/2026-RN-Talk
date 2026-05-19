@@ -19,7 +19,8 @@
       "!**/ios",
       "!**/android",
       "!**/*.d.ts",
-      "!presentation"
+      "!presentation",
+      "!apps/rn-talk/example"
     ]
   },
   "linter": {

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignore": ["presentation/**", "apps/rn-talk/example/**"],
+  "workspaces": {
+    "apps/rn-talk": {
+      "entry": ["src/app/**/*.{ts,tsx}"],
+      "ignoreDependencies": [
+        "@react-navigation/bottom-tabs",
+        "@react-navigation/elements",
+        "@react-navigation/native",
+        "expo-device",
+        "expo-glass-effect",
+        "expo-status-bar",
+        "expo-symbols",
+        "expo-web-browser",
+        "react-native-worklets"
+      ]
+    }
+  }
+}
