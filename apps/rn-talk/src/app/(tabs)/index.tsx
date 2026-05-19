@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import { StyleSheet } from 'react-native-unistyles';
 
 export default function HomeScreen() {
   return (
@@ -9,19 +10,20 @@ export default function HomeScreen() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create((theme) => ({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 8,
+    gap: theme.spacing.sm,
+    backgroundColor: theme.colors.background,
   },
   title: {
-    fontSize: 28,
-    fontWeight: '600',
+    ...theme.typography.title,
+    color: theme.colors.text,
   },
   subtitle: {
-    fontSize: 16,
-    opacity: 0.6,
+    ...theme.typography.body,
+    color: theme.colors.textMuted,
   },
-});
+}));

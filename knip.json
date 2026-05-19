@@ -3,8 +3,9 @@
   "ignore": ["presentation/**", "apps/rn-talk/example/**"],
   "workspaces": {
     "apps/rn-talk": {
-      "entry": ["src/app/**/*.{ts,tsx}"],
+      "entry": ["src/app/**/*.{ts,tsx}", "babel.config.js"],
       "ignoreDependencies": [
+        "@expo/ui",
         "@react-navigation/bottom-tabs",
         "@react-navigation/elements",
         "@react-navigation/native",
