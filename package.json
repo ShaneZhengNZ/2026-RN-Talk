@@ -9,9 +9,12 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "typecheck": "turbo run typecheck"
+    "typecheck": "turbo run typecheck",
+    "dep:check": "syncpack lint",
+    "dep:fix": "syncpack fix-mismatches && syncpack format"
   },
   "devDependencies": {
+    "syncpack": "14.2.0",
     "turbo": "^2.3.0",
     "typescript": "~5.9.2"
   },
