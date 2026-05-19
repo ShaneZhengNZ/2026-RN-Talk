@@ -1,9 +1,6 @@
+import { TrendingQuerySchema, type TrendingResponse } from '@rn-talk/shared';
 import { Router } from 'express';
 import { z } from 'zod';
-import {
-  TrendingQuerySchema,
-  type TrendingResponse,
-} from '@rn-talk/shared';
 import { TtlCache } from '../cache.js';
 import { config } from '../config.js';
 import { fetchTrendingRepos, UpstreamError } from '../github.js';

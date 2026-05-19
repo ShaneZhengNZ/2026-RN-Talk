@@ -1,9 +1,5 @@
+import type { Repo, TrendingQuery, TrendingSince } from '@rn-talk/shared';
 import { z } from 'zod';
-import {
-  type Repo,
-  type TrendingQuery,
-  type TrendingSince,
-} from '@rn-talk/shared';
 import { config } from './config.js';
 
 const GitHubRepoSchema = z.object({
@@ -29,7 +25,7 @@ const GitHubSearchResponseSchema = z.object({
 export class UpstreamError extends Error {
   constructor(
     public readonly status: number,
-    message: string,
+    message: string
   ) {
     super(message);
     this.name = 'UpstreamError';
@@ -62,7 +58,7 @@ const buildQuery = (query: TrendingQuery, now: Date): string => {
 
 export const fetchTrendingRepos = async (
   query: TrendingQuery,
-  now: Date = new Date(),
+  now: Date = new Date()
 ): Promise<Repo[]> => {
   const url = new URL('https://api.github.com/search/repositories');
   url.searchParams.set('q', buildQuery(query, now));
