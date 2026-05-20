@@ -15,7 +15,7 @@ interface TrendingInput {
 }
 
 async function fetchTrending(query: TrendingQuery): Promise<TrendingResponse> {
-  const url = new URL(`${API_BASE_URL}/trending`);
+  const url = new URL(`${API_BASE_URL}/api/repos/trending`);
   url.searchParams.set('since', query.since);
   if (query.language !== undefined) {
     url.searchParams.set('language', query.language);
