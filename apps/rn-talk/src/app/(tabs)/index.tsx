@@ -44,6 +44,11 @@ export default function HomeScreen() {
       </View>
 
       <View style={styles.section}>
+        <Text style={styles.sectionLabel}>Platform divergence</Text>
+        <Button label="Open platform demo" onPress={() => router.push('/platform-demo' as Href)} />
+      </View>
+
+      <View style={styles.section}>
         <Text style={styles.sectionLabel}>Expo Router demos</Text>
 
         <Button label="Open modal (router.push)" onPress={() => router.push('/modal')} />

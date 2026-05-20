@@ -33,6 +33,14 @@ export default function RootLayout() {
               title: 'Form',
             }}
           />
+          <Stack.Screen
+            name="platform-demo"
+            options={{
+              presentation: 'modal',
+              headerShown: true,
+              title: 'Platform',
+            }}
+          />
           <Stack.Screen name="+not-found" />
         </Stack>
       </QueryClientProvider>
