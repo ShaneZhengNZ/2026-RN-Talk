@@ -25,6 +25,14 @@ export default function RootLayout() {
               title: 'Token',
             }}
           />
+          <Stack.Screen
+            name="form-demo"
+            options={{
+              presentation: 'modal',
+              headerShown: true,
+              title: 'Form',
+            }}
+          />
           <Stack.Screen name="+not-found" />
         </Stack>
       </QueryClientProvider>

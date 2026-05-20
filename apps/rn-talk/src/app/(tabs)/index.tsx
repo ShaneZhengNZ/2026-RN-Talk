@@ -37,6 +37,13 @@ export default function HomeScreen() {
       </View>
 
       <View style={styles.section}>
+        <Text style={styles.sectionLabel}>react-hook-form + zod</Text>
+        {/* `/form-demo` is added in this commit — typed routes regenerate on
+            next `expo start`. Cast until then. */}
+        <Button label="Open sign-up form" onPress={() => router.push('/form-demo' as Href)} />
+      </View>
+
+      <View style={styles.section}>
         <Text style={styles.sectionLabel}>Expo Router demos</Text>
 
         <Button label="Open modal (router.push)" onPress={() => router.push('/modal')} />
