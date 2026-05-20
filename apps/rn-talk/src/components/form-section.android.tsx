@@ -24,17 +24,17 @@ const styles = StyleSheet.create((theme) => ({
   },
   title: {
     ...theme.typography.caption,
-    color: theme.colors.textMuted,
+    color: theme.colors.primary,
     textTransform: 'uppercase',
-    letterSpacing: 1,
+    letterSpacing: 1.5,
+    fontWeight: '600',
   },
   card: {
     backgroundColor: theme.colors.backgroundElevated,
-    borderRadius: theme.radius.md,
-    borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderRadius: theme.radius.sm,
     padding: theme.spacing.md,
     gap: theme.spacing.md,
+    elevation: 2,
   },
   footer: {
     ...theme.typography.small,

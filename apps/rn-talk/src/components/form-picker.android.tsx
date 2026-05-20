@@ -9,7 +9,6 @@ interface FormPickerProps<T extends PickerValue> {
   selection: T;
   onSelectionChange: (value: T) => void;
   options: readonly { label: string; value: T }[];
-  // Kept for parity with the iOS variant; web renders a segmented row regardless.
   pickerStyle?: PickerStyleType;
 }
 
@@ -30,6 +29,7 @@ export function FormPicker<T extends PickerValue>({
               key={String(opt.value)}
               accessibilityRole="button"
               accessibilityState={{ selected: isSelected }}
+              android_ripple={{ color: 'rgba(0,0,0,0.12)' }}
               onPress={() => onSelectionChange(opt.value)}
               style={[styles.option, isSelected && styles.optionSelected]}
             >
@@ -59,22 +59,23 @@ const styles = StyleSheet.create((theme) => ({
   },
   option: {
     paddingHorizontal: theme.spacing.md,
-    paddingVertical: theme.spacing.xs,
-    borderRadius: theme.radius.pill,
-    borderWidth: 1,
-    borderColor: theme.colors.border,
+    paddingVertical: theme.spacing.sm,
+    borderRadius: theme.radius.sm,
     backgroundColor: theme.colors.background,
+    elevation: 1,
   },
   optionSelected: {
     backgroundColor: theme.colors.primary,
-    borderColor: theme.colors.primary,
+    elevation: 3,
   },
   optionLabel: {
     ...theme.typography.small,
     color: theme.colors.text,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
   },
   optionLabelSelected: {
     color: theme.colors.background,
-    fontWeight: '600',
+    fontWeight: '700',
   },
 }));

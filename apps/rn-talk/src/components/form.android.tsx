@@ -2,8 +2,6 @@ import type { ReactNode } from 'react';
 import { ScrollView } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 
-// Web/default fallback. iOS uses `form.ios.tsx` (swift-ui Form via @expo/ui),
-// Android uses `form.android.tsx`. Same export, different platform shells.
 interface FormProps {
   children: ReactNode;
 }
@@ -22,7 +20,7 @@ const styles = StyleSheet.create((theme) => ({
     backgroundColor: theme.colors.background,
   },
   content: {
-    padding: theme.spacing.lg,
-    gap: theme.spacing.lg,
+    padding: theme.spacing.md,
+    gap: theme.spacing.md,
   },
 }));
