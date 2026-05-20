@@ -14,6 +14,14 @@ export default function RootLayout() {
             title: 'Modal',
           }}
         />
+        <Stack.Screen
+          name="token-modal"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            title: 'Token',
+          }}
+        />
         <Stack.Screen name="+not-found" />
       </Stack>
     </StrictMode>
