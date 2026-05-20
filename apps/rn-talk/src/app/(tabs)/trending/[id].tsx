@@ -1,22 +1,41 @@
 import { Stack, useLocalSearchParams } from 'expo-router';
-import { ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
+import { useTrendingRepos } from '@/api/trending';
 import { Button } from '@/components/button';
-import { findRepoById } from '@/data/trending-mock';
 import { useFavoritesStore } from '@/store/favorites';
 
 export default function RepoDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const repo = findRepoById(id);
+  const { data, isPending, isError, error } = useTrendingRepos();
+
   // Hook usage: subscribe to whether this repo is favorited.
   const isFavorite = useFavoritesStore((state) => Boolean(state.ids[id]));
-  // Pulling actions via a selector keeps them stable across renders and
-  // avoids re-rendering the whole component when unrelated state changes.
+  // Pulling actions via a selector keeps them stable across renders.
   const toggle = useFavoritesStore((state) => state.toggle);
+
+  if (isPending) {
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
+  if (isError) {
+    return (
+      <View style={styles.center}>
+        <Text style={styles.title}>Couldn&apos;t load repo</Text>
+        <Text style={styles.description}>{error.message}</Text>
+      </View>
+    );
+  }
+
+  const repo = data.repos.find((r) => String(r.id) === id);
 
   if (!repo) {
     return (
-      <View style={styles.missing}>
+      <View style={styles.center}>
         <Text style={styles.title}>Repo not found</Text>
         <Text style={styles.description}>id: {id}</Text>
       </View>
@@ -27,13 +46,13 @@ export default function RepoDetailScreen() {
     <ScrollView style={styles.scroll} contentContainerStyle={styles.container}>
       <Stack.Screen options={{ title: repo.name }} />
 
-      <Text style={styles.owner}>{repo.owner}</Text>
+      <Text style={styles.owner}>{repo.owner.login}</Text>
       <Text style={styles.title}>{repo.name}</Text>
-      <Text style={styles.description}>{repo.description}</Text>
+      {repo.description !== null && <Text style={styles.description}>{repo.description}</Text>}
 
       <View style={styles.meta}>
         <Stat label="Stars" value={repo.stars.toLocaleString()} />
-        <Stat label="Language" value={repo.language} />
+        {repo.language !== null && <Stat label="Language" value={repo.language} />}
       </View>
 
       <View style={styles.actions}>
@@ -65,7 +84,7 @@ const styles = StyleSheet.create((theme) => ({
     padding: theme.spacing.lg,
     gap: theme.spacing.sm,
   },
-  missing: {
+  center: {
     flex: 1,
     padding: theme.spacing.lg,
     gap: theme.spacing.sm,
