@@ -1,11 +1,18 @@
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { ScrollView, Text, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
+import { Button } from '@/components/button';
 import { findRepoById } from '@/data/trending-mock';
+import { useFavoritesStore } from '@/store/favorites';
 
 export default function RepoDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const repo = findRepoById(id);
+  // Hook usage: subscribe to whether this repo is favorited.
+  const isFavorite = useFavoritesStore((state) => Boolean(state.ids[id]));
+  // Pulling actions via a selector keeps them stable across renders and
+  // avoids re-rendering the whole component when unrelated state changes.
+  const toggle = useFavoritesStore((state) => state.toggle);
 
   if (!repo) {
     return (
@@ -27,6 +34,14 @@ export default function RepoDetailScreen() {
       <View style={styles.meta}>
         <Stat label="Stars" value={repo.stars.toLocaleString()} />
         <Stat label="Language" value={repo.language} />
+      </View>
+
+      <View style={styles.actions}>
+        <Button
+          label={isFavorite ? '★ Favorited' : '☆ Favorite'}
+          variant={isFavorite ? 'primary' : 'secondary'}
+          onPress={() => toggle(id)}
+        />
       </View>
     </ScrollView>
   );
@@ -87,5 +102,10 @@ const styles = StyleSheet.create((theme) => ({
   statValue: {
     ...theme.typography.bodyBold,
     color: theme.colors.text,
+  },
+  actions: {
+    marginTop: theme.spacing.lg,
+    flexDirection: 'row',
+    gap: theme.spacing.sm,
   },
 }));

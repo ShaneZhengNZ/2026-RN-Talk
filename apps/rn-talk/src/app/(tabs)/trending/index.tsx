@@ -2,6 +2,7 @@ import { Link } from 'expo-router';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { StyleSheet } from 'react-native-unistyles';
 import { TRENDING_REPOS, type TrendingRepo } from '@/data/trending-mock';
+import { useFavoritesStore } from '@/store/favorites';
 
 export default function TrendingListScreen() {
   return (
@@ -14,6 +15,10 @@ export default function TrendingListScreen() {
 }
 
 function RepoRow({ repo }: { repo: TrendingRepo }) {
+  // Hook usage: a selector subscribes the row to just this repo's favorite
+  // state, so other repos' toggles don't re-render this row.
+  const isFavorite = useFavoritesStore((state) => Boolean(state.ids[repo.id]));
+
   return (
     <Link href={{ pathname: '/trending/[id]', params: { id: repo.id } }} asChild>
       <Pressable
@@ -22,6 +27,7 @@ function RepoRow({ repo }: { repo: TrendingRepo }) {
         accessibilityLabel={`${repo.owner}/${repo.name}`}
       >
         <Text style={styles.title}>
+          {isFavorite ? '★ ' : ''}
           {repo.owner} / {repo.name}
         </Text>
         <Text style={styles.description} numberOfLines={2}>
