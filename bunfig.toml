@@ -1,0 +1,5 @@
+[install]
+# Hoisted linker matches what Metro autolinking, Expo prebuild, and EAS expect.
+# The isolated default produces virtual "duplicates" that confuse expo-doctor
+# and break native module resolution.
+linker = "hoisted"
